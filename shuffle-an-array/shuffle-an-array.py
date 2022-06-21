@@ -7,7 +7,13 @@ class Solution:
         return self.original 
 
     def shuffle(self) -> List[int]:
+        
+        # Solution 3: Fisher-Yates algorithm (modern version)
+        # Time complexity: O(n)
+        # Space complexity: O(1)
+        
         arr = self.original
+   
         #last_index = len(arr)-1
         #while last_index > 0:
         #    rand_index = random.randint(0, last_index)
@@ -16,11 +22,26 @@ class Solution:
         #    arr[rand_index] = temp
         #    last_index -= 1
         #return arr
+        
+        # Solution 2: Sorting assigned random values
+        # Time complexity: O(nlogn)
+        # Space complexity: O(n)
         rand_values = [random.random() for i in range(len(arr))]
         rand_indexes = [i for i in range(len(arr))]
         rand_indexes.sort(key=lambda i: rand_values[i])
         arr = [arr[i] for i in rand_indexes]
         return arr
+    
+        # Solution 1: Fisher-Yates algorithm (old version)
+        # Time complexity: O(n²)
+        # Space complexity: O(n)
+        #shuffled = []
+        #while len(arr) > 0:
+        #    rand_index = random.randrange(0, len(arr))
+        #    shuffled.append(arr[rand_index])
+        #    arr.pop(rand_index)
+        #arr = shuffled
+        #return arr
         
 
 
