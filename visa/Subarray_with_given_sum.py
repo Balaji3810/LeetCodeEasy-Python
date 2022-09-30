@@ -7,13 +7,13 @@ def subArraySum(arr, n, sum_):
         while j <= n:
             if currSum == sum_:
                 print("Sum of elements %d from %d" % (i+1, j))
-                return 1
+                return [i+1, j]
             if currSum > sum_ or j == n:
                 break
             currSum += arr[j]
             j += 1
     print("No subarray found")
-    return 0
+    return [-1]
 
 
 # Driver program
